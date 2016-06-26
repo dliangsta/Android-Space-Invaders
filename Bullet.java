@@ -12,11 +12,11 @@ public class Bullet {
 
     private RectF rect;
 
-    // Which way is it shooting
+    // direction
     public final int UP = 0;
     public final int DOWN = 1;
 
-    // Going nowhere
+    // headed nowhere
     int heading = -1;
     float speed =  800;
 
@@ -32,7 +32,6 @@ public class Bullet {
 
         rect = new RectF();
     }
-   // Next we have a bunch of getters and setters that pass rect back to SpaceInvadersView for collision detection and drawing, returns the status (isActive true or false) which as we will see is useful for knowing when to draw and check for collisions and finally we have a getImpactPointY method which returns the tip pixel of the bullet. This will be different depending upon whether the bullet is heading down (fired by an invader) or up (fired by player). Enter the getters and setters we have just discussed below the previous block of code.
 
     public RectF getRect(){
         return  rect;
@@ -47,13 +46,12 @@ public class Bullet {
     }
 
     public float getImpactPointY(){
-        if (heading == DOWN){
+        if (heading == DOWN)
             return y + height;
-        }else{
+        else
             return  y;
-        }
-
     }
+
     public boolean shoot(float startX, float startY, int direction) {
         if (!isActive) {
             x = startX;
@@ -62,24 +60,20 @@ public class Bullet {
             isActive = true;
             return true;
         }
-        // Bullet already active
         return false;
     }
 
     public void update(long fps){
 
-        // Just move up or down
-        if(heading == UP){
+        // just move up or down
+        if(heading == UP)
             y = y - speed / fps;
-        }else{
+        else
             y = y + speed / fps;
-        }
-
-        // Update rect
+        // update rect
         rect.left = x;
         rect.right = x + width;
         rect.top = y;
         rect.bottom = y + height;
-
     }
 }

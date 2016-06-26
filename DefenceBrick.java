@@ -18,13 +18,11 @@ public class DefenceBrick {
 
         isVisible = true;
 
-        // Sometimes a bullet slips through this padding.
-        // Set padding to zero if this annoys you
         int brickPadding = 1;
-        // The number of shelters
         int shelterPadding = screenX / 9;
         int startHeight = screenY - (screenY /8 * 2);
 
+        // what the brick will look like
         rect = new RectF(column * width + brickPadding + (shelterPadding * shelterNumber) + shelterPadding + shelterPadding * shelterNumber,
                 row * height + brickPadding + startHeight,
                 column * width + width - brickPadding + (shelterPadding * shelterNumber) + shelterPadding + shelterPadding * shelterNumber,
